@@ -8,15 +8,15 @@ executed during the level runtime.
 Some components have parameters of type "function". Thsese are lua
 function that are called during runtime.
 
-*For example, the PlayerComponent has a `onStartWalking` attribute that
-is called when the player starts moving. In the players templates
+*For example, the PlatformerComponent has a `on_start_walking` attribute that
+is called when the entity starts moving. In the players templates
 provided in the vanilla game, it is often used to change the animation
 of the player.*
 
 Most callback function receive an argument called `entity`, it's a
 reference on the entity concerned. *In the previous example, the
-`onStartWalking` function receive an `entity` argument that is the
-player entity that starts walking.*
+`on_start_walking` function receive an `entity` argument that is the
+entity that starts walking.*
 
 **Warning: when the functions are executed (during runtime), the lua
 table representing the template is not accessible (it's just a template,
@@ -30,7 +30,7 @@ of the player (template `kenney/player1.lua`) when he jumps:
 -- The other components here
 ["Platformer"] = {
     --... (other attributes)
-    onStartJumping = function(entity) --The callback function
+    on_start_jumping = function(entity) --The callback function
         entity:set_attribute("Render", "current_animation", string_value("jump"))
     end,
     --... (other attributes)
