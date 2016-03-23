@@ -2,7 +2,7 @@
 
 This section describes the attributes of each components.
 
-**Be sure to read** [serialization-format](serialization-format.md) **before continuing your
+**Be sure to read** [Template serialization](serialization-format.md) **before continuing your
 reading.**
 
 ## Vocabulary
@@ -26,7 +26,9 @@ Currently, the game has the following components:
 
 -   [CustomBehaviorComponent](#custombehaviorcomponent)
 -   [HitboxComponent](#hitboxcomponent)
+-   [PlatformComponent](#platformcomponent)
 -   [PlatformerComponent](#platformercomponent)
+-   [PlayerComponent](#playercomponent)
 -   [PositionComponent](#positioncomponent)
 -   [RenderComponent](#rendercomponent)
 
@@ -95,9 +97,20 @@ components = {
 }
 ```
 
+## PlatformComponent
+
+Declares and entity as a platform on which the entities with the `PlatformerComponent` can walk and jump.
+
+### Attributes
+
+Name | Type | Description | [U](#vocabulary) | [G/S](#vocabulary) | [P](#vocabulary)
+-----|------|-------------|------------------|--------------------|------------------
+activated | bool | activates or not the platform collision with entities | ✓ | ✓ | ✓
+platform_type | string | `"Platform"` for solid platforms or `"Jumpthru"` for platforms that the platformer entities can pass through from underneath. | ✓ | |
+
 ## PlatformerComponent
 
-Declare an entity as affected by the gravity and that it can walk and jump on platforms.
+Declares an entity as affected by the gravity and that it can walk and jump on platforms.
 
 *Note: it doesn't mean the entity is controlled by a player, need to use PlayerComponent
 in addition for that. So, items moving on the ground can use the PlatformerComponent too.*
@@ -123,6 +136,16 @@ on_start_jumping | function | Function with the current entity as its single arg
 on_start_falling | function | Function with the current entity as its single argument. Called when the entity starts falling (from a platform or when going down after a jump). | ✓ | ✓ | ✓
 on_turn_right | function | Function with the current entity as its single argument. Called when the entity turns towards the right direction. | ✓ | ✓ | ✓
 on_turn_left | function | Function with the current entity as its single argument. Called when the entity turns towards the left direction. | ✓ | ✓ | ✓
+
+## PlayerComponent
+
+Declare an entity as a player. It will allow the player's controls to make the entity walk and jump using the `PlatformerComponent`.
+
+### Attributes
+
+Name | Type | Description | [U](#vocabulary) | [G/S](#vocabulary) | [P](#vocabulary)
+-----|------|-------------|------------------|--------------------|------------------
+player_number | int | The player number (starting from 0) |  | ✓ (read-only) |
 
 ## PositionComponent
 
