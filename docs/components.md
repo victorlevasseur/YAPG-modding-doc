@@ -24,13 +24,25 @@ In the attribute's tables below:
 
 Currently, the game has the following components:
 
+-   [CollidableComponent](#collidablecomponent)
+-   [ColliderComponent](#collidercomponent)
 -   [CustomBehaviorComponent](#custombehaviorcomponent)
+-   [CustomDataComponent](#customdatacomponent)
+-   [FinishLineComponent](#finishlinecomponent)
 -   [HitboxComponent](#hitboxcomponent)
 -   [PlatformComponent](#platformcomponent)
 -   [PlatformerComponent](#platformercomponent)
 -   [PlayerComponent](#playercomponent)
 -   [PositionComponent](#positioncomponent)
 -   [RenderComponent](#rendercomponent)
+
+## CollidableComponent
+
+*Not documented yet.*
+
+## ColliderComponent
+
+*Not documented yet.*
 
 ## CustomBehaviorComponent
 
@@ -54,6 +66,14 @@ components = {
     },
 }
 ```
+
+## CustomDataComponent
+
+This is a special component, see [Lua runtime > Per entity instance storage](lua.md#per-entity-instance-storage) to understand howit should be used.
+
+## FinishLineComponent
+
+*Not documented yet.*
 
 ## HitboxComponent
 
