@@ -31,7 +31,7 @@ of the player (template `kenney/player1.lua`) when he jumps:
 ["Platformer"] = {
     --... (other attributes)
     on_start_jumping = function(entity) --The callback function
-        entity:set_attribute("Render", "current_animation", string_value("jump"))
+        entity.render.current_animation = "jump"
     end,
     --... (other attributes)
 }
