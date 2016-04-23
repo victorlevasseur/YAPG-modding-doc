@@ -26,7 +26,7 @@ by the `entity` argument).**
 Here is an example of the callback function that changes the animation
 of the player (template `kenney/player1.lua`) when he jumps:
 
-```lu
+```lua
 -- The other components here
 ["Platformer"] = {
     --... (other attributes)
@@ -46,44 +46,21 @@ represents a particular entity instance.
 ### Methods
 
 -   `destroy()` : destroys the entity
--   `get_attribute("componentName", "attributeName")` : get the value of
-    an attribute of the entity
--   `set_attribute("componentName", "attributeName", newValue)` : set
-    the value of an attribute of the entity
 
-### Usage
+### Attributes
 
-In the last two methods, `"componentName"` is the name of the Component
-owning the attribute. **Do not put `"Component"` at the end of the
-name: for example, for the PositionComponent, just type `"Position"`.**
+-   `collidable` : returns the CollidableComponent of the entity
+-   `collider` : returns the ColliderComponent of the entity
+-   `custom_behavior` : returns the CustomBehaviorComponent of the entity
+-   `finish_line` : returns the FinishLineComponent of the entity
+-   `hitbox` : returns the HitboxComponent of the entity
+-   `platform` : returns the PlatformComponent of the entity
+-   `platformer` : returns the PlatformerComponent of the entity
+-   `player` : returns the PlayerComponent of the entity
+-   `position` : returns the PositionComponent of the entity
+-   `render` : returns the RenderComponent of the entity
 
-The `"attributeName"` is the name of the attribute (as given in the
-component's documentation).
-
-The `get/set_attribute` methods don't work directly with values. In
-fact, `get_attribute` return a small **proxy object** containing the
-value and for `set_attribute`, the `newValue` must be a **proxy object**
-too.
-
-However, the game provides functions to convert from/to these proxy
-objects. These functions are :
-
--   `as_xxx()`: converts from the proxy object returned by
-    `get_attribute` to the xxx type.
--   `xxx_value()`: converts a value of type xxx to a proxy object usable
-    by `set_attribute`.
-
-`xxx` must be the name of the attribute's type. See the components to
-see the precise type of each attributes.
-
-**Warning: using `int_value()`/`as_int()` for an attribute of type float
-will not work. You must use the exactly correct type for converting
-proxy objects.**
-
-*Note:* Why proxy objects ? These is mainly because the game engine is
-written in C++ which is a statically typed language. They allow the
-engine to work with any types of values to receive or change attributes'
-values.
+See [Components](components.md) to learn about the attributes of each components.
 
 ### Example
 
@@ -92,29 +69,7 @@ entity:
 
 ```lua
 -- considering that "entity" is the variable holding the entity instance.
-local old_x_pos = as_float(entity:get_attribute("Position", "x"))
-entity:set_attribute("Position", "x", float_value(old_x_pos + 200))
-```
-
-This other example shows how to change an animation duration of an
-entity:
-
-```lua
--- considering that "entity" is the variable holding the entity instance.
-local animations_table = {}
---
--- get_table_attribute is a special method allowing to get array and map attributes of entities' components.
--- you must give it an already existing table where the result is put.
-entity:get_table_attribute("Render", "animations", animations_table)
---
--- We are going to change the duration of the animation named "default"
-local theAnimationToChange = animations_table["default"]
-theAnimationToChange.duration = 2
--- Note that theAnimationToChange is not a table but an animation object.
--- It's not the serialized version of an animation but the runtime object used by the game engine.
---
--- update the animation attribute with the table
-entity:set_table_attribute("Render", "animations", animations_table)
+entity.position.x = entity.position.x + 200
 ```
 
 ## Per entity instance storage
@@ -138,14 +93,32 @@ itself is accessible through the `get_custom_data` method of `entity`.
 This method returns the custom data component. It has the following
 methods:
 
- - `get_value(field)`: returns a proxy object containing the value stored in a field
- - `set_value(field, value)`: set the value stored in a field (`value` must be a proxy object)
+ - `get_value(field)`: returns the value stored in a field
+ - `set_value(field, value)`: set the value stored in a field
  - `has_value(field)`: returns `true` if the specified field exists, `false` otherwise.
 
-**Warning:** These methods work with proxy object as the
-`get/set_attribute` methods of `entity`. So, the same rules apply: you
-must use the `as_XXX(...)` and `XXX_value(...)` conversion functions to
-get or set values.
+ The `get/set_value` methods don't work directly with values. In
+ fact, `get_value` return a small **proxy object** containing the
+ value and for `set_value`, the `value` must be a **proxy object**
+ too.
+
+ However, the game provides functions to convert from/to these proxy
+ objects. These functions are :
+
+ -   `as_xxx()`: converts from the proxy object returned by
+     `get_attribute` to the xxx type.
+ -   `xxx_value()`: converts a value of type xxx to a proxy object usable
+     by `set_attribute`.
+
+ `xxx` must be the name of the type (float, int, unsigned_int, string...).
+
+ **Warning: using `int_value()`/`as_int()` for a value of type float
+ will not work. You must use the exactly correct type for converting
+ proxy objects.**
+
+ *Note:* Why proxy objects ? These is mainly because the game engine is
+ written in C++ which is a statically typed language. They allow the
+ engine to work with any types of values to receive or change values
 
 ### Define default values
 

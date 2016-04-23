@@ -12,9 +12,9 @@ In the attribute's tables below:
 -   the **"U"** column tells if the attributes can be unserialized from
     lua/XML
 -   the **"G/S"** column tells if the attributes can be received or
-    changed at runtime with `entity:get_attribute("aComp", "attrName")`
-    and `entity:set_attribute("aComp", "attrName", val)` methods. See
-    lua to see how to get/change attributes' values of components during
+    changed at runtime with `entity.a_component.attr_name`
+    and `entity.a_component.attr_name = value` syntaxes. See
+    [Lua runtime](lua.md) to see how to get/change attributes' values of components during
     runtime.
 -   the **"P"** column tells if the attributes can be used as a template
     parameter.
@@ -69,7 +69,7 @@ components = {
 
 ## CustomDataComponent
 
-This is a special component, see [Lua runtime > Per entity instance storage](lua.md#per-entity-instance-storage) to understand howit should be used.
+This is a special component, see [Lua runtime > Per entity instance storage](lua.md#per-entity-instance-storage) to understand how it should be used.
 
 ## FinishLineComponent
 
@@ -192,17 +192,6 @@ components = {
         height = 128,
     },
 }
-```
-
-### Lua script example
-
-This example moves the entity by 100px towards the right direction.
-
-```lua
---myEntity is an particular entity instance
-local old_x_pos = as_float(myEntity:get_attribute("Position", "x"))
-local new_x_pos = old_x_pos + 100
-myEntity:set_attribute("Position", "x", float_value(new_x_pos))
 ```
 
 ## RenderComponent
