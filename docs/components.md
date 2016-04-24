@@ -12,8 +12,8 @@ In the attribute's tables below:
 -   the **"U"** column tells if the attributes can be unserialized from
     lua/XML
 -   the **"G/S"** column tells if the attributes can be received or
-    changed at runtime with `entity.a_component.attr_name`
-    and `entity.a_component.attr_name = value` syntaxes. See
+    changed at runtime with `a_component(entity).attr_name`
+    and `a_component(entity).attr_name = value` syntaxes. See
     [Lua runtime](lua.md) to see how to get/change attributes' values of components during
     runtime.
 -   the **"P"** column tells if the attributes can be used as a template

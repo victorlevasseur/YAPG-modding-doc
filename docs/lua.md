@@ -31,7 +31,7 @@ of the player (template `kenney/player1.lua`) when he jumps:
 ["Platformer"] = {
     --... (other attributes)
     on_start_jumping = function(entity) --The callback function
-        entity.render.current_animation = "jump"
+        render(entity).current_animation = "jump"
     end,
     --... (other attributes)
 }
@@ -46,19 +46,22 @@ represents a particular entity instance.
 ### Methods
 
 -   `destroy()` : destroys the entity
+-   `get_custom_data()` : get a structure containing the custom data of an entity, see [Per-entity instance storage](#per-entity-instance-storage)
 
-### Attributes
+### Related free functions
 
--   `collidable` : returns the CollidableComponent of the entity
--   `collider` : returns the ColliderComponent of the entity
--   `custom_behavior` : returns the CustomBehaviorComponent of the entity
--   `finish_line` : returns the FinishLineComponent of the entity
--   `hitbox` : returns the HitboxComponent of the entity
--   `platform` : returns the PlatformComponent of the entity
--   `platformer` : returns the PlatformerComponent of the entity
--   `player` : returns the PlayerComponent of the entity
--   `position` : returns the PositionComponent of the entity
--   `render` : returns the RenderComponent of the entity
+-   `collidable(entity)` : returns the CollidableComponent of the entity
+-   `collider(entity)` : returns the ColliderComponent of the entity
+-   `custom_behavior(entity)` : returns the CustomBehaviorComponent of the entity
+-   `finish_line(entity)` : returns the FinishLineComponent of the entity
+-   `hitbox(entity)` : returns the HitboxComponent of the entity
+-   `platform(entity)` : returns the PlatformComponent of the entity
+-   `platformer(entity)` : returns the PlatformerComponent of the entity
+-   `player(entity)` : returns the PlayerComponent of the entity
+-   `position(entity)` : returns the PositionComponent of the entity
+-   `render(entity)` : returns the RenderComponent of the entity
+
+These functions return `nil` if the entity doesn't have the corresponding component.
 
 See [Components](components.md) to learn about the attributes of each components.
 
@@ -69,7 +72,7 @@ entity:
 
 ```lua
 -- considering that "entity" is the variable holding the entity instance.
-entity.position.x = entity.position.x + 200
+position(entity).x = position(entity).x + 200
 ```
 
 ## Per entity instance storage
