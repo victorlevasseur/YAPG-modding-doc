@@ -10,7 +10,7 @@ reading.**
 In the attribute's tables below:
 
 -   the **"U"** column tells if the attributes can be unserialized from YAPG templates files
--   the **"G/S"** column tells if the attributes can be received or
+-   the **"R"** column tells if the attributes can be received or
     changed at runtime with `a_component(entity).attr_name`
     and `a_component(entity).attr_name = value` syntaxes. See
     [Lua runtime](lua.md) to see how to get/change attributes' values of components during
@@ -67,7 +67,7 @@ Component that allows a lua callback function to be called at each frames.
 
 ### Attributes
 
-Name | Type | Description | [U](#vocabulary) | [G/S](#vocabulary) | [P](#vocabulary)
+Name | Type | Description | [U](#vocabulary) | [R](#vocabulary) | [P](#vocabulary)
 -----|------|-------------|------------------|--------------------|------------------
 on_update | function | A function called each frame with two arguments : entity and dt (the time since the previous frame). | ✓ | |
 
@@ -99,7 +99,7 @@ entities and platforms and collisions between collider entities and collidable e
 
 ### Attributes
 
-Name | Type | Description | [U](#vocabulary) | [G/S](#vocabulary) | [P](#vocabulary)
+Name | Type | Description | [U](#vocabulary) | [R](#vocabulary) | [P](#vocabulary)
 -----|------|-------------|------------------|--------------------|------------------
 polygon | polygon | The hitbox convex polygon | ✓ | ✓ |
 
@@ -140,7 +140,7 @@ Declares and entity as a platform on which the entities with the `PlatformerComp
 
 ### Attributes
 
-Name | Type | Description | [U](#vocabulary) | [G/S](#vocabulary) | [P](#vocabulary)
+Name | Type | Description | [U](#vocabulary) | [R](#vocabulary) | [P](#vocabulary)
 -----|------|-------------|------------------|--------------------|------------------
 activated | bool | activates or not the platform collision with entities | ✓ | ✓ | ✓
 platform_type | string | `"Platform"` for solid platforms or `"Jumpthru"` for platforms that the platformer entities can pass through from underneath. | ✓ | |
@@ -156,7 +156,7 @@ in addition for that. So, items moving on the ground can use the PlatformerCompo
 consider setting `wants_to_jump`, `wants_to_go_left` and `wants_to_go_right` attributes
 of this component to make it move (instead of changing it position).**
 
-Name | Type | Description | [U](#vocabulary) | [G/S](#vocabulary) | [P](#vocabulary)
+Name | Type | Description | [U](#vocabulary) | [R](#vocabulary) | [P](#vocabulary)
 -----|------|-------------|------------------|--------------------|------------------
 max_walking_speed | float | The maximum walking speed (pixels/s) | ✓ | ✓ | ✓
 max_jumping_speed | float | The maximum jumping speed (pixels/s) | ✓ | ✓ | ✓
@@ -180,7 +180,7 @@ Declare an entity as a player. It will allow the player's controls to make the e
 
 ### Attributes
 
-Name | Type | Description | [U](#vocabulary) | [G/S](#vocabulary) | [P](#vocabulary)
+Name | Type | Description | [U](#vocabulary) | [R](#vocabulary) | [P](#vocabulary)
 -----|------|-------------|------------------|--------------------|------------------
 player_number | int | The player number (starting from 0) |  | ✓ (read-only) |
 
@@ -190,7 +190,7 @@ Component containing position and size data of an entity.
 
 ### Attributes
 
-Name | Type | Description | [U](#vocabulary) | [G/S](#vocabulary) | [P](#vocabulary)
+Name | Type | Description | [U](#vocabulary) | [R](#vocabulary) | [P](#vocabulary)
 -----|------|-------------|------------------|--------------------|------------------
 x | float | | ✓ | ✓ | ✓
 y | float | | ✓ | ✓ | ✓
@@ -217,7 +217,7 @@ Stores the animations of an entity and tells the render engine which one to rend
 
 ### Attributes
 
-Name | Type | Description | [U](#vocabulary) | [G/S](#vocabulary) | [P](#vocabulary)
+Name | Type | Description | [U](#vocabulary) | [R](#vocabulary) | [P](#vocabulary)
 -----|------|-------------|------------------|--------------------|------------------
 texture | string | The filepath to the texture picture | ✓ | ✓ | ✓
 animations | map associating string to animation | Associates the animation name with the animation. | ✓ | … |
