@@ -100,8 +100,7 @@ points | array of [sf_vector_2f](#sf_vector_2f-class) | The points of the hitbox
 }
 ```
 
-sf_vector_2f class
---------------
+## sf_vector_2f class
 
 Represents a point with two float coordinates.
 

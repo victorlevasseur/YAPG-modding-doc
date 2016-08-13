@@ -38,15 +38,33 @@ Currently, the game has the following components:
 
 ## CollidableComponent
 
-*Not documented yet.*
+Component that allows an entity to react to collisions with multiple polygons.
+
+Name | Type | Description | [U](#vocabulary) | [R](#vocabulary)
+-----|------|-------------|------------------|-----------------
+polygons | Map associating string to [polygon_callback](#polygon_callback-class) | The string is the polygon's name. | ✓ |
+
+# polygon_callback class
+
+Represents a polygon with its associated callbacks (used by CollidableComponent to allow scripting on collisions)
+
+Name | Type | Description | [U](#vocabulary) | [R](#vocabulary)
+-----|------|-------------|------------------|-----------------
+polygon | [polygon](#polygon-class) | The polygon | ✓ | ✓
+exclusive | boolean | Whether the following polygon_callback will be ignored if this one collides | ✓ |
+on_collision_begin | A function, two args: the entity itself and the other colliding entity | A function called when the collision starts | ✓ |
+on_collision_end | A function, two args: the entity itself and the other colliding entity | A function called when the collision ends | ✓ |
+collides | A function, two args: the entity itself and the other colliding entity | A function called each frame while the collision still exists. | ✓ |
 
 ## ColliderComponent
 
-*Not documented yet.*
+Component that allows the object to trigger collisions with entities with CollidableComponent.
+
+Alone, it will not work as it needs the entity to have a CollidableComponent to store at least one hitbox
 
 ## CustomBehaviorComponent
 
-Component that allow a lua callback function to be called at each frames.
+Component that allows a lua callback function to be called at each frames.
 
 ### Attributes
 
