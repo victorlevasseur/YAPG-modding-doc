@@ -63,7 +63,7 @@ entity_template = {
 
 The `components` field contains an array of component's tables
 describing the values of their attributes when an entity is instanciated
-with the template. For example, the `"Render"` components contains
+with the template. For example, the `"render"` components contains
 attributes describing the texture used to display the entity in-game.
 **Each entity instanciated will receive all the components listed in the
 corresponding template initialized with the values written in each
@@ -71,9 +71,9 @@ component's tables.**
 
 In the above code, if the game instanciates an entity with this
 template, the entity will be initialized with components
-`"ComponentNumberOne"` and `"ComponentNumberTwo"` and with their
+`"component_number_one"` and `"component_number_two"` and with their
 attributes set to the values written in the tables (the attribute
-`component_attribute_one` of `"ComponentNumberOne"` will be initialized
+`component_attribute_one` of `"component_number_one"` will be initialized
 with `"value"`). This is important to understand that after
 instanciation, the attributes of the entities' components can change
 independently: a mysterious script can decide to change the texture used
@@ -103,7 +103,7 @@ In the example above, this means that the template has one parameter
 called `parameter_one` (with its friendly name being "The value of
 component_attribute_one"). This parameter, when set during an entity
 instanciation, changes the value affected to the attribute
-`component_attribute_one` of the component `ComponentNumberOne` (this
+`component_attribute_one` of the component `component_number_one` (this
 means that the default value of this attribute, which is `"value"` can
 be overridden by the parameter value if provided).
 

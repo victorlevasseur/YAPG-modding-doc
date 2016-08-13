@@ -2,15 +2,14 @@
 
 This section describes the attributes of each components.
 
-**Be sure to read** [Template serialization](serialization-format.md) **before continuing your
+**Be sure to read** [YAPG template syntax](serialization-format.md) **before continuing your
 reading.**
 
 ## Vocabulary
 
 In the attribute's tables below:
 
--   the **"U"** column tells if the attributes can be unserialized from
-    lua/XML
+-   the **"U"** column tells if the attributes can be unserialized from YAPG templates files
 -   the **"G/S"** column tells if the attributes can be received or
     changed at runtime with `a_component(entity).attr_name`
     and `a_component(entity).attr_name = value` syntaxes. See
@@ -44,7 +43,7 @@ Name | Type | Description | [U](#vocabulary) | [R](#vocabulary)
 -----|------|-------------|------------------|-----------------
 polygons | Map associating string to [polygon_callback](#polygon_callback-class) | The string is the polygon's name. | ✓ |
 
-# polygon_callback class
+### polygon_callback class
 
 Represents a polygon with its associated callbacks (used by CollidableComponent to allow scripting on collisions)
 
@@ -77,7 +76,7 @@ on_update | function | A function called each frame with two arguments : entity 
 ```lua
 components = {
     --The CustomBehaviorComponent
-    ["CustomBehavior"] = {
+    ["custom_behavior"] = {
         on_update = function(entity, dt)
             --act on the entity
         end,
@@ -109,7 +108,7 @@ polygon | polygon | The hitbox convex polygon | ✓ | ✓ |
 ```lua
 components = {
     --The HitboxComponent
-    ["Hitbox"] = {
+    ["hitbox"] = {
         --this is a square hitbox
         polygon = {
             points = {
@@ -202,8 +201,8 @@ height | float | | ✓ | ✓ | ✓
 
 ```lua
 components = {
-    --The PositionComponent
-    ["Position"] = {
+    --The position_component
+    ["position"] = {
         x = 10,
         y = 20,
         width = 64,
@@ -228,8 +227,8 @@ current_animation | string | The current animation's name | ✓ | ✓ | ✓
 
 ```lua
 components = {
-    --The RenderComponent
-    ["Render"] = {
+    --The render_component
+    ["render"] = {
         texture = "myTexture.png",
         animations = {
             default_animation = {

@@ -7,8 +7,7 @@ specific data structures.
 
 In the attribute's tables below:
 
--   The "U" column tells if the attributes can be unserialized from
-    lua/XML.
+-   The "U" column tells if the attributes can be unserialized from YAPG templates files.
 -   The "R" column tells if the attributes can be changed at runtime
     with lua scripting using the `myObject.attribute = newValue` syntax.
 
