@@ -28,7 +28,7 @@ of the player (template `kenney/player1.lua`) when he jumps:
 
 ```lua
 -- The other components here
-["Platformer"] = {
+["platformer"] = {
     --... (other attributes)
     on_start_jumping = function(entity) --The callback function
         render(entity).current_animation = "jump"
@@ -90,9 +90,7 @@ template to be created for each instanciated entities.
 
 ### Gettting and settings values from/to `CustomDataComponent`
 
-`get_attribute` and `set_attribute` are not used to get or set a value
-inside it (remember, it doesn't have real attributes). But the component
-itself is accessible through the `get_custom_data` method of `entity`.
+The component is accessible through the `get_custom_data` method of `entity`.
 This method returns the custom data component. It has the following
 methods:
 
@@ -105,13 +103,13 @@ methods:
  value and for `set_value`, the `value` must be a **proxy object**
  too.
 
- However, the game provides functions to convert from/to these proxy
+ The game provides functions to convert from/to these proxy
  objects. These functions are :
 
  -   `as_xxx()`: converts from the proxy object returned by
-     `get_attribute` to the xxx type.
+     `get_value` to the xxx type.
  -   `xxx_value()`: converts a value of type xxx to a proxy object usable
-     by `set_attribute`.
+     by `set_value`.
 
  `xxx` must be the name of the type (float, int, unsigned_int, string...).
 
